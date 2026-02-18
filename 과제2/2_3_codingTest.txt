@@ -1,0 +1,46 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+#define MINDOTVALUE -256;
+#define MAXDOTVALUE 256;
+#define DOTS_LENGTH 4;
+#define DOTS_ITEMLENGTH 2;
+#define MY_MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MY_MAX(a, b) ((a) > (b) ? (a) : (b))
+int solution(vector<vector<int>> dots) {
+    int left_x = MAXDOTVALUE;
+    int top_y = MINDOTVALUE;
+    int bottom_y= MAXDOTVALUE;
+    int right_x=MINDOTVALUE;
+
+    
+    for(size_t i = 0 ; i < dots.size(); i++)
+    {
+        for(size_t j = 0; j < dots[i].size(); j++)
+        {
+            
+            if(j == 0) //x좌표
+            {            
+                int cood_x = dots[i][j];
+                left_x = MY_MIN(left_x, cood_x);
+                right_x = MY_MAX(right_x, cood_x);
+            }
+            else if(j == 1) //y좌표 
+            {
+                int cood_y = dots[i][j];
+                top_y = MY_MAX(top_y, cood_y);
+                bottom_y = MY_MIN(bottom_y, cood_y);
+            }
+                
+        }
+    }
+    
+    int dx = right_x - left_x;
+    int dy = top_y - bottom_y;
+    int area = dx*dy;
+    
+    
+    int answer = area;
+    return answer;
+}

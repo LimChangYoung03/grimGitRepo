@@ -1,0 +1,22 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+int solution(int n, int k) {
+    //lamb = 12000/per , baverage = 2000/per, 10XLamb = Service Baveragex1
+    const int LAMB_PRICE = 12000;
+    const int BAVERAGE_PRICE = 2000;
+    const int SERVICE_STD = 10;
+        
+    int totalPrice = n*LAMB_PRICE + k*BAVERAGE_PRICE;
+    
+    if(n >= SERVICE_STD)
+    {
+        int serviceBvgCount = n/SERVICE_STD; 
+        totalPrice = totalPrice - serviceBvgCount*BAVERAGE_PRICE;
+    }
+   
+    int answer = totalPrice;
+    return answer;
+}

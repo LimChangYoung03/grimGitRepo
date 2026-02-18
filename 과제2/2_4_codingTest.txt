@@ -1,0 +1,26 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
+vector<int> solution(vector<int> arr, vector<bool> flag) {
+    
+    vector<int> answer;
+    for(size_t i = 0 ; i < flag.size();i++)
+    {
+        if(flag[i])
+        {
+            int tmpSize = arr[i]*2;
+            for(int j = 0 ; j < tmpSize; j++)
+            {
+                answer.push_back(arr[i]);                 
+            }
+        }
+        else
+        {
+            int tmpSize = arr[i];
+            answer.erase(answer.end()-arr[i], answer.end());
+        }
+    }
+    return answer;
+}

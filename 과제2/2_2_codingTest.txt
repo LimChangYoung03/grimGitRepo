@@ -1,0 +1,36 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+#define ERR_BOARD_SIZE -1;
+#define ERR_INPUT_VALUE -2;
+int solution(vector<vector<int>> board, int k) {
+    size_t boardLength = board.size();
+    size_t boardItemLength = board[0].size();
+    if(boardLength < 1 || boardLength > 100) return ERR_BOARD_SIZE;
+    int sum = 0;
+    for(size_t i = 0 ; i < boardLength ; i++)
+    {
+       for(size_t j = 0 ; j < boardItemLength ; j++) 
+       {
+           if(boardItemLength < 1 || boardItemLength > 100)
+            return ERR_BOARD_SIZE;
+        if( k >= 0 && k < boardItemLength + boardLength)
+        {
+            if( i + j <= k)
+            {
+                int v = board[i][j];
+                sum +=v;
+            }
+        }
+        else
+            return ERR_INPUT_VALUE;
+            
+                
+        }
+           
+       }
+    
+    int answer = sum;
+    return answer;
+}
